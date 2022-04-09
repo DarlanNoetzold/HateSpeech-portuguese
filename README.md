@@ -20,6 +20,13 @@ Detecção de discurso de ódio em português utilizando técnicas de aprendizad
 * O retorno será um json como o mostrado acima, porém o 'valor' será 0 ser não for um discurso de ódio ou 1 no caso de ser.
 
 ---
+## API do HateSpeech:
+* A API:
+<br>Link: https://hate-speech-portuguese.herokuapp.com
+* Repositório no GitHub:
+<br>Link: https://github.com/DarlanNoetzold/HateSpeech-portuguese
+
+---
 ## API do spyware:
 * A API:
 <br>Link: https://spyware-api.herokuapp.com/
@@ -27,6 +34,11 @@ Detecção de discurso de ódio em português utilizando técnicas de aprendizad
 <br>Link: https://spyware-api.herokuapp.com/swagger-ui/index.html
 * Repositório no GitHub:
 <br>Link: https://github.com/DarlanNoetzold/spyware-API
+
+---
+## Script do Spyware:
+* Repositório no GitHub:
+<br>Link: https://github.com/DarlanNoetzold/spyware
 
 ---
 ## Remote-Analyser
