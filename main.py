@@ -8,6 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pickle
+import Grafics as grf
+
 
 TOTAL_KFOLDS = 10
 
@@ -25,7 +27,7 @@ proc = prtxt.TextProcessor()
 data = pd.read_csv("base/base_dados.csv", encoding = 'utf-8')
 originalText = data['frase']
 marcs = data['valor']
-textVectorization = proc.processar(originalText)
+textVectorization = proc.process(originalText)
 X = np.array(textVectorization)
 Y = np.array(marcs.tolist())
 
@@ -53,3 +55,27 @@ for i in range(len(classifiers)):
 print(results_validation)
 
 pickle.dump(classifiers, open('model/model_hate.pkl', 'wb'))
+
+#Exibe uma imagem de um gráfico representando cada uma das métricas de avaliação empregadas.
+for i in range(len(metrics)):
+    res_mets = []
+    for chave, valor in results_tests_metrics.items():
+        res_mets.append(valor['test_' + metrics[i]])
+    grf.mostrarGraficoLinhas(res_mets[0], res_mets[1], res_mets[2], kfolds,
+                             [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], "Número do 'fold' (n)", label_metrics[i])
+
+#Gera o gráfico dos tempos de fit time, ou seja, o tempo para realização de fit em cada classificador.
+for i in range(len(classifiers)):
+    t_fit_time = []
+    for valor in results_tests_metrics.values():
+        t_fit_time.append(valor['fit_time'])
+    grf.mostrarGraficoLinhas(t_fit_time[0], t_fit_time[1], t_fit_time[2], kfolds,
+                             [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
+                             "Número do 'fold' (n)", "Fit Time (s)")
+
+#Gera o gráfico de acurácia da previsão (predict) de cada classificador.
+accs = []
+for i in range(len(classifiers)):
+    acc = results_validation.get(names[i])
+    accs.append(acc)
+grf.mostrarGraficoBarras(names, accs, "Acurácia (na Validação)")
