@@ -41,11 +41,26 @@ Detecção de discurso de ódio em português utilizando técnicas de aprendizad
 <br>Link: https://github.com/DarlanNoetzold/spyware
 
 ---
-## Remote-Analyser
+## Remote-Analyser:
 * Repositório no GitHub:
 <br>Link: https://github.com/DarlanNoetzold/Remote-Analyser
 * Heroku:
 <br>Link: https://remoteanalyser.herokuapp.com/home
+
+---
+## Gráficos:
+* Acurácia Balanceada:
+![image](https://user-images.githubusercontent.com/41628589/162925653-617d4044-51ef-411b-b22a-d02e4b21e993.png)
+
+* Acurácia:
+![image](https://user-images.githubusercontent.com/41628589/162925763-3a68ec30-2ffc-468e-9ef3-535e236b8e03.png)
+
+* Área sobre curva ROC:
+![image](https://user-images.githubusercontent.com/41628589/162925862-5f0547fa-3d5e-4e93-b7d9-b76564886696.png)
+
+* Acurácia (na Validação):
+![image](https://user-images.githubusercontent.com/41628589/162925953-5412f559-add2-4776-91d8-847f957cea8d.png)
+
 
 ---
 ⭐️ From [DarlanNoetzold](https://github.com/DarlanNoetzold)
