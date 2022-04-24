@@ -28,7 +28,7 @@ def predict():
     aplicationText = aplicationData['frase']
     vectorizationTextApplication = proc.process(aplicationText)
 
-    for i in range(2710 - len(vectorizationTextApplication[0])):
+    for i in range(2714 - len(vectorizationTextApplication[0])):
         vectorizationTextApplication[0].append('0')
 
     XAPP = np.array(vectorizationTextApplication)
