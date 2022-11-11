@@ -2,7 +2,7 @@ import os
 from flask import Flask, request
 import pandas as pd
 import pickle
-import TextProcessor as prtxt
+import TextTokenizer as prtxt
 import numpy as np
 
 

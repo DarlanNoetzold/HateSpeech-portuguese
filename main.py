@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import TextTokenizer as trtxt
 import TextProcessor as prtxt
 from sklearn.model_selection import cross_validate
 from sklearn.naive_bayes import MultinomialNB
@@ -9,7 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pickle
 import Grafics as grf
-
+import keras
+import tensorflow
 
 TOTAL_KFOLDS = 10
 
@@ -22,13 +24,15 @@ names = ['Logistic Regression', 'Multinomial Naive Bayes',
          'Linear SVC (SVM)']
 classifiers = [LogisticRegression(), MultinomialNB(), LinearSVC()]
 
-proc = prtxt.TextProcessor()
+proc = trtxt.TextProcessor()
 
-data = pd.read_csv("base/base_dados.csv", encoding = 'utf-8')
-originalText = data['frase']
-marcs = data['valor']
-textVectorization = proc.process(originalText)
-X = np.array(textVectorization)
+preprocessed_data = prtxt.init()
+
+originalText = preprocessed_data['frase']
+marcs = preprocessed_data['valor']
+fraseVectorization = proc.process(originalText)
+
+X = np.array(fraseVectorization)
 Y = np.array(marcs.tolist())
 
 x_train, x_valid, y_train, y_valid = train_test_split(X, Y, test_size=0.2, random_state=0)
