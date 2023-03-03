@@ -18,7 +18,7 @@ TOTAL_KFOLDS = 10
 kfolds = [i+1 for i in range(TOTAL_KFOLDS)]
 
 metrics = ['accuracy', 'balanced_accuracy', 'roc_auc']
-label_metrics = ['Acurácia', 'Acurácia Balanceada', 'Área sobre curva ROC']
+label_metrics = ['Accuracy', 'Balanced Accuracy', 'Area under ROC curve']
 
 names = ['Logistic Regression', 'Multinomial Naive Bayes',
          'Linear SVC (SVM)']
@@ -66,7 +66,7 @@ for i in range(len(metrics)):
     for chave, valor in results_tests_metrics.items():
         res_mets.append(valor['test_' + metrics[i]])
     grf.mostrarGraficoLinhas(res_mets[0], res_mets[1], res_mets[2], kfolds,
-                             [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], "Número do 'fold' (n)", label_metrics[i])
+                             [0.5, 0.6, 0.7, 0.8, 0.9, 1], "Number of 'fold' (n)", label_metrics[i])
 
 #Gera o gráfico dos tempos de fit time, ou seja, o tempo para realização de fit em cada classificador.
 for i in range(len(classifiers)):
@@ -74,7 +74,7 @@ for i in range(len(classifiers)):
     for valor in results_tests_metrics.values():
         t_fit_time.append(valor['fit_time'])
     grf.mostrarGraficoLinhas(t_fit_time[0], t_fit_time[1], t_fit_time[2], kfolds,
-                             [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
+                             [0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
                              "Número do 'fold' (n)", "Fit Time (s)")
 
 #Gera o gráfico de acurácia da previsão (predict) de cada classificador.
