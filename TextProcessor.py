@@ -125,3 +125,48 @@ def init():
     preprocessed_data = preprocessed_data.rename(columns={'cleaned_tweet': 'frase'})
 
     return preprocessed_data
+
+def init_en():
+    df1 = pd.read_csv("base_en/labeled_data.csv", encoding='utf-8')
+
+    data = df1.drop(columns=["id","count","hate_speech","offensive_language","class"])
+
+    valor = []
+    for row in data['neither']:
+        if row < 3:
+            valor.append(1)
+        else:
+            valor.append(0)
+
+    data['valor'] = valor
+    data.rename(columns={'tweet': 'frase'})
+
+    preprocessed_data = data.copy()
+    preprocessed_data = preprocessing(preprocessed_data)
+    preprocessed_data = preprocessed_data.replace('None', pd.NA)
+    preprocessed_data = preprocessed_data.dropna()
+    preprocessed_data = preprocessed_data.drop_duplicates()
+    preprocessed_data = preprocessed_data.drop(columns=['frase'])
+    preprocessed_data = preprocessed_data.rename(columns={'cleaned_tweet': 'frase'})
+
+    return preprocessed_data
+
+
+def init_sp():
+    data = []
+    with open(f'base_sp/data_sp.txt', 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for line in lines:
+            id_, frase, valor = line.strip().split(';||;')
+            data.append({'frase': frase, 'valor': int(valor)})
+
+    data = pd.DataFrame(data)
+    preprocessed_data = data.copy()
+    preprocessed_data = preprocessing(preprocessed_data)
+    preprocessed_data = preprocessed_data.replace('None', pd.NA)
+    preprocessed_data = preprocessed_data.dropna()
+    preprocessed_data = preprocessed_data.drop_duplicates()
+    preprocessed_data = preprocessed_data.drop(columns=['frase'])
+    preprocessed_data = preprocessed_data.rename(columns={'cleaned_tweet': 'frase'})
+
+    return preprocessed_data
