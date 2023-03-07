@@ -9,7 +9,7 @@ class TextProcessor():
             self.stopwords = nltk.corpus.stopwords.words('english')
         elif language == "pt":
             self.stopwords = nltk.corpus.stopwords.words('portuguese')
-        elif language == "sp":
+        elif language == "es":
             self.stopwords = nltk.corpus.stopwords.words('spanish')
         else:
             self.stopwords = nltk.corpus.stopwords.words('english')
