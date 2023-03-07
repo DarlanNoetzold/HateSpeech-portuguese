@@ -6,7 +6,7 @@ import TextTokenizer as prtxt
 import numpy as np
 from langdetect import detect
 
-model_pt = pickle.load(open("model/model_hate_pt.pkl", 'rb'))
+model_pt = pickle.load(open("model/model_hate.pkl", 'rb'))
 model_en = pickle.load(open("model/model_hate_en.pkl", 'rb'))
 model_sp = pickle.load(open("model/model_hate_sp.pkl", 'rb'))
 
@@ -26,31 +26,39 @@ def predict():
     application_data = df_raw
 
     application_text = application_data['frase']
-    lang = detect(application_text)
+    lang = detect(test_json['frase'])
     proc = prtxt.TextProcessor(lang)
 
     vectorization_text_application = proc.process(application_text)
 
-    for i in range(2714 - len(vectorization_text_application[0])):
-        vectorization_text_application[0].append('0')
-
-    XAPP = np.array(vectorization_text_application)
     results = []
     if lang == 'pt':
+        for i in range(2714 - len(vectorization_text_application[0])):
+            vectorization_text_application[0].append('0')
+        XAPP = np.array(vectorization_text_application)
         for i in range(len(model_pt)):
             results.append(model_pt[i].predict(XAPP))
     elif lang == 'en':
+        for i in range(19948 - len(vectorization_text_application[0])):
+            vectorization_text_application[0].append('0')
+        XAPP = np.array(vectorization_text_application)
         for i in range(len(model_en)):
             results.append(model_en[i].predict(XAPP))
-    elif lang == 'sp':
+    elif lang == 'es':
+        for i in range(11256 - len(vectorization_text_application[0])):
+            vectorization_text_application[0].append('0')
+        XAPP = np.array(vectorization_text_application)
         for i in range(len(model_sp)):
             results.append(model_sp[i].predict(XAPP))
     else:
+        for i in range(19948 - len(vectorization_text_application[0])):
+            vectorization_text_application[0].append('0')
+        XAPP = np.array(vectorization_text_application)
         for i in range(len(model_en)):
             results.append(model_en[i].predict(XAPP))
 
 
-    df_raw['valor'] = 1
+    df_raw['valor'] = 0
     for i in range(len(results)):
         if results[i] == 'yes':
             df_raw['valor'] = 1
