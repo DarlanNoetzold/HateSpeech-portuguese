@@ -1,14 +1,6 @@
 import nltk
 
-
 class TextProcessor():
-<<<<<<< Updated upstream
-    def __init__(self):
-        nltk.download('stopwords')
-        nltk.download('rslp')
-        nltk.download('punkt')
-        self.stopwords = nltk.corpus.stopwords.words('portuguese')
-=======
     def __init__(self, language):
         nltk.download('stopwords')
         nltk.download('rslp')
@@ -21,7 +13,6 @@ class TextProcessor():
             self.stopwords = nltk.corpus.stopwords.words('spanish')
         else:
             self.stopwords = nltk.corpus.stopwords.words('english')
->>>>>>> Stashed changes
         self.stemmer = nltk.stem.RSLPStemmer()
 
     def vectorizeText(self, text, translater):
