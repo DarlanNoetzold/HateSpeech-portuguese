@@ -13,3 +13,4 @@ __pycache__/TextTokenizer.cpython-310.pyc
 *.txt
 *.csv
 *.pkl
+*.png
