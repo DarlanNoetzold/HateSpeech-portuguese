@@ -10,8 +10,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pickle
 import Grafics as grf
-import keras
-import tensorflow
 
 TOTAL_KFOLDS = 10
 
@@ -22,11 +20,11 @@ label_metrics = ['Accuracy', 'Balanced Accuracy', 'Area under ROC curve']
 
 names = ['Logistic Regression', 'Multinomial Naive Bayes',
          'Linear SVC (SVM)']
-classifiers = [LogisticRegression(), MultinomialNB(), LinearSVC()]
+classifiers = [LogisticRegression(max_iter=1000), MultinomialNB(), LinearSVC(max_iter=1000)]
 
-proc = trtxt.TextProcessor()
+proc = trtxt.TextProcessor('en')
 
-preprocessed_data = prtxt.init()
+preprocessed_data = prtxt.init_en()
 
 originalText = preprocessed_data['frase']
 marcs = preprocessed_data['valor']
@@ -58,7 +56,7 @@ for i in range(len(classifiers)):
     results_validation[names[i]] = accuracy
 print(results_validation)
 
-pickle.dump(classifiers, open('model/model_hate.pkl', 'wb'))
+pickle.dump(classifiers, open('model/model_hate_en.pkl', 'wb'))
 
 #Exibe uma imagem de um gráfico representando cada uma das métricas de avaliação empregadas.
 for i in range(len(metrics)):
