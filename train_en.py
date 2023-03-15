@@ -62,7 +62,7 @@ pickle.dump(classifiers, open('model/model_hate_en.pkl', 'wb'))
 for i in range(len(metrics)):
     res_mets = []
     for chave, valor in results_tests_metrics.items():
-        res_mets.append(valor['test_' + metrics[i]])
+        res_mets.append(valor['en_test_' + metrics[i]])
     grf.mostrarGraficoLinhas(res_mets[0], res_mets[1], res_mets[2], kfolds,
                              [0.5, 0.6, 0.7, 0.8, 0.9, 1], "Number of 'fold' (n)", label_metrics[i])
 
