@@ -1,5 +1,5 @@
 # HateSpeech-portuguese
-Detecção de discurso de ódio em português utilizando técnicas de aprendizado de máquina.
+Detecção de discurso de ódio em português, inglês e espanhol utilizando técnicas de aprendizado de máquina.
 
 ## Desenvolvimento:
 * Foi usado Python 3.8 como linguagem base;
