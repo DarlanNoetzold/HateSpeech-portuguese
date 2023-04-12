@@ -1,12 +1,9 @@
 __pycache__\*
-*.pkl
 *.pyc
 *.pyc
 __pycache__/Grafics.cpython-310.pyc
 __pycache__/TextProcessor.cpython-310.pyc
 __pycache__/TextTokenizer.cpython-310.pyc
-*.pkl
 *.txt
 *.csv
-*.pkl
 *.png
