@@ -58,11 +58,11 @@ def predict():
             results.append(model_en[i].predict(XAPP))
 
 
-    df_raw['valor'] = 0
+    df_raw['valor'] = 1
     for i in range(len(results)):
         if results[i] == 'yes':
             df_raw['valor'] = 1
-
+    print(df_raw['valor'])
     return df_raw.to_json(orient='records')
 
 
