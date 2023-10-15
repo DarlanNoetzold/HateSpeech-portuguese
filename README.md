@@ -19,6 +19,17 @@ Detecção de discurso de ódio em português, inglês e espanhol utilizando té
 }
 * O retorno será um json como o mostrado acima, porém o 'valor' será 0 ser não for um discurso de ódio ou 1 no caso de ser.
 
+## Como utilizar:
+* A aplicação completa contendo todos os microserviços configurados pode ser obtida no [DockerHub](https://hub.docker.com/repository/docker/darlannoetzold/tcc-spyware/general).
+* Para executá-lo de maneira mais fácil basta excutar os seguintes comandos:
+```
+docker container run --platform=linux/amd64 -it -p 8091:8091 -p 8090:8090 -p 5000:5000 -p 9091:9090 -p 3000:3000 --name=app -d darlannoetzold/tcc-spyware:4.0
+
+docker exec -itd app /init-spyware-api.sh
+docker exec -itd app /init-remoteanalyser.sh
+docker exec -itd app /init-handler-hatespeech.sh
+```
+
 ---
 ## API do HateSpeech:
 * A API:
