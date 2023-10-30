@@ -32,17 +32,11 @@ docker exec -itd app /init-handler-hatespeech.sh
 
 ---
 ## API do HateSpeech:
-* A API:
-<br>Link: https://hate-speech-portuguese.herokuapp.com
 * Repositório no GitHub:
 <br>Link: https://github.com/DarlanNoetzold/HateSpeech-portuguese
 
 ---
 ## API do spyware:
-* A API:
-<br>Link: https://spyware-api.herokuapp.com/
-* Documentação da API:
-<br>Link: https://spyware-api.herokuapp.com/swagger-ui/index.html
 * Repositório no GitHub:
 <br>Link: https://github.com/DarlanNoetzold/spyware-API
 
@@ -55,8 +49,6 @@ docker exec -itd app /init-handler-hatespeech.sh
 ## Remote-Analyser:
 * Repositório no GitHub:
 <br>Link: https://github.com/DarlanNoetzold/Remote-Analyser
-* Heroku:
-<br>Link: https://remoteanalyser.herokuapp.com/home
 
 ---
 ## Gráficos:
