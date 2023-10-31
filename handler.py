@@ -30,27 +30,31 @@ def predict():
     proc = prtxt.TextProcessor(lang)
 
     vectorization_text_application = proc.process(application_text)
-
+    df_raw['language'] = ''
     results = []
     if lang == 'pt':
+        df_raw['language'] = 'pt'
         for i in range(2714 - len(vectorization_text_application[0])):
             vectorization_text_application[0].append('0')
         XAPP = np.array(vectorization_text_application)
         for i in range(len(model_pt)):
             results.append(model_pt[i].predict(XAPP))
     elif lang == 'en':
+        df_raw['language'] = 'en'
         for i in range(19948 - len(vectorization_text_application[0])):
             vectorization_text_application[0].append('0')
         XAPP = np.array(vectorization_text_application)
         for i in range(len(model_en)):
             results.append(model_en[i].predict(XAPP))
     elif lang == 'es':
+        df_raw['language'] = 'es'
         for i in range(11256 - len(vectorization_text_application[0])):
             vectorization_text_application[0].append('0')
         XAPP = np.array(vectorization_text_application)
         for i in range(len(model_sp)):
             results.append(model_sp[i].predict(XAPP))
     else:
+        df_raw['language'] = 'en'
         for i in range(19948 - len(vectorization_text_application[0])):
             vectorization_text_application[0].append('0')
         XAPP = np.array(vectorization_text_application)
@@ -58,11 +62,20 @@ def predict():
             results.append(model_en[i].predict(XAPP))
 
 
-    df_raw['valor'] = 1
+    df_raw['value'] = 1
+    df_raw['model'] = []
     for i in range(len(results)):
         if results[i] == 'yes':
-            df_raw['valor'] = 1
-    print(df_raw['valor'])
+            if i == 0:
+                df_raw['model'].append('LOGISTIC_REGRESSION')
+            elif i == 1:
+                df_raw['model'].append('MULTINOMIAL_NAIVE_BAYES')
+            else:
+                df_raw['model'].append('LOGISTIC_REGRESSION')
+
+            df_raw['value'] = 1
+
+    print(df_raw['value'])
     return df_raw.to_json(orient='records')
 
 
