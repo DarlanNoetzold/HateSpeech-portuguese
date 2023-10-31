@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import pandas as pd
 import pickle
 import TextTokenizer as prtxt
@@ -11,7 +11,6 @@ model_en = pickle.load(open("model/model_hate_en.pkl", 'rb'))
 model_sp = pickle.load(open("model/model_hate_sp.pkl", 'rb'))
 
 app = Flask(__name__)
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -61,23 +60,25 @@ def predict():
         for i in range(len(model_en)):
             results.append(model_en[i].predict(XAPP))
 
-
     df_raw['value'] = 1
-    df_raw['model'] = []
+
+    models = []
     for i in range(len(results)):
         if results[i] == 'yes':
             if i == 0:
-                df_raw['model'].append('LOGISTIC_REGRESSION')
+                models.append('LOGISTIC_REGRESSION')
             elif i == 1:
-                df_raw['model'].append('MULTINOMIAL_NAIVE_BAYES')
+                models.append('MULTINOMIAL_NAIVE_BAYES')
             else:
-                df_raw['model'].append('LOGISTIC_REGRESSION')
+                models.append('LOGISTIC_REGRESSION')
 
-            df_raw['value'] = 1
+    json_dict = df_raw.to_dict(orient='records')[0]
+    json_dict['models'] = models
 
     print(df_raw['value'])
-    return df_raw.to_json(orient='records')
 
+    # Return o JSON resultante com 'models' adicionado
+    return jsonify(json_dict)
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
