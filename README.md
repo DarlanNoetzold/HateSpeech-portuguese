@@ -1,27 +1,26 @@
 # HateSpeech-portuguese
-Detecção de discurso de ódio em português, inglês e espanhol utilizando técnicas de aprendizado de máquina.
+Detection of hate speech in Portuguese, English, and Spanish using machine learning techniques.
 
-## Desenvolvimento:
-* Foi usado Python 3.8 como linguagem base;
-* Foram usado bibliotecas auxiliares para a preparação dos dados (pandas, numpy, nltk, pickle);
-* Para salvar os dados foi usado uma API, desenvolvida por mim e hospedada na Heroku. Para desenvoler a API foi usado Flask;
-* Para a criação do modelo de predição foi usado Sklearn. Os modelos usados foram: Logistic Regression, Multinomial Naive Bayes e Linear SVC (SVM).
+## Development:
+* Python 3.8 was used as the base language;
+* Auxiliary libraries were used for data preparation (pandas, numpy, nltk, pickle);
+* An API, developed by me and hosted on Heroku, was used to save the data. Flask was used to develop the API;
+* Sklearn was used for creating the prediction model. The models used were: Logistic Regression, Multinomial Naive Bayes, and Linear SVC (SVM).
 
-
-## Projeto:
-* Projeto de Prova de conceito para o desenvolvimento de NLP's para reconhecer textos e prever os sentimentos que eles transmitem;
-* Este modelo de predição faz parte de um projeto maior chamado Remote-Analyser, o qual é um sistema desenvolvido por mim, para coleta de dados suspeitos em computadores empresarias e/ou institucionais. Servindo assim, como um monitoramento mais eficiente do patrimônio destas entidades;
-* Esse modelo em Python usando diversas bibliotecas específicas para auxiliar no desenvolvimento. Os classificadores foram treinado com um dataset e exportados usando pickle. O arquivo exportado foi importado em uma API construida com Flask, esta API recebe, além dos classificadores (Logistic Regression, Multinomial Naive Bayes e Linear SVC (SVM)), um body em json pelo endpoint /predict, com uma frase para prever se é um discurso de ódio ou não;
-* O body de entrada para o endpoint /predict deve ser como esse:
+## Project:
+* Proof of concept project for the development of NLPs to recognize texts and predict the sentiments they convey;
+* This prediction model is part of a larger project called Remote-Analyser, which is a system developed by me, for collecting suspicious data on corporate and/or institutional computers. Thus, serving as a more efficient monitoring of these entities' assets;
+* This model in Python uses various specific libraries to assist in development. The classifiers were trained with a dataset and exported using pickle. The exported file was imported into an API built with Flask, this API receives, in addition to the classifiers (Logistic Regression, Multinomial Naive Bayes, and Linear SVC (SVM)), a json body through the /predict endpoint, with a phrase to predict whether it is hate speech or not;
+* The input body for the /predict endpoint should be like this:
 {
   'valor': 0,
-  'frase': 'Testando API'
+  'frase': 'test API'
 }
-* O retorno será um json como o mostrado acima, porém o 'valor' será 0 ser não for um discurso de ódio ou 1 no caso de ser.
+* The return will be a json like the one shown above, but the 'value' will be 0 if it is not hate speech or 1 if it is.
 
-## Como utilizar:
-* A aplicação completa contendo todos os microserviços configurados pode ser obtida no [DockerHub](https://hub.docker.com/repository/docker/darlannoetzold/tcc-spyware/general).
-* Para executá-lo de maneira mais fácil basta excutar os seguintes comandos:
+## How to use:
+* The complete application containing all configured microservices can be obtained at [DockerHub](https://hub.docker.com/repository/docker/darlannoetzold/tcc-spyware/general).
+* To run it more easily, just execute the following commands:
 ```
 docker container run --platform=linux/amd64 -it -p 8091:8091 -p 8090:8090 -p 5000:5000 -p 9091:9090 -p 3000:3000 --name=app -d darlannoetzold/tcc-spyware:4.0
 
@@ -31,39 +30,40 @@ docker exec -itd app /init-handler-hatespeech.sh
 ```
 
 ---
-## API do HateSpeech:
-* Repositório no GitHub:
-<br>Link: https://github.com/DarlanNoetzold/HateSpeech-portuguese
 
 ---
-## API do spyware:
-* Repositório no GitHub:
-<br>Link: https://github.com/DarlanNoetzold/spyware-API
+## HateSpeech API:
+* GitHub Repository:
+<br>Link: [https://github.com/DarlanNoetzold/HateSpeech-portuguese](https://github.com/DarlanNoetzold/HateSpeech-portuguese)
 
 ---
-## Script do Spyware:
-* Repositório no GitHub:
-<br>Link: https://github.com/DarlanNoetzold/spyware
+## spyware API:
+* GitHub Repository:
+<br>Link: [https://github.com/DarlanNoetzold/spyware-API](https://github.com/DarlanNoetzold/spyware-API)
+
+---
+## Spyware Script:
+* GitHub Repository:
+<br>Link: [https://github.com/DarlanNoetzold/spyware](https://github.com/DarlanNoetzold/spyware)
 
 ---
 ## Remote-Analyser:
-* Repositório no GitHub:
-<br>Link: https://github.com/DarlanNoetzold/Remote-Analyser
+* GitHub Repository:
+<br>Link: [https://github.com/DarlanNoetzold/Remote-Analyser](https://github.com/DarlanNoetzold/Remote-Analyser)
 
 ---
-## Gráficos:
-* Acurácia Balanceada:
+## Charts:
+* Balanced Accuracy:
 <br>![image](https://user-images.githubusercontent.com/41628589/162925653-617d4044-51ef-411b-b22a-d02e4b21e993.png)
 
-* Acurácia:
+* Accuracy:
 <br>![image](https://user-images.githubusercontent.com/41628589/162925763-3a68ec30-2ffc-468e-9ef3-535e236b8e03.png)
 
-* Área sobre curva ROC:
+* Area under ROC Curve:
 <br>![image](https://user-images.githubusercontent.com/41628589/162925862-5f0547fa-3d5e-4e93-b7d9-b76564886696.png)
 
-* Acurácia (na Validação):
+* Accuracy (Validation):
 <br>![image](https://user-images.githubusercontent.com/41628589/162925953-5412f559-add2-4776-91d8-847f957cea8d.png)
-
 
 ---
 ⭐️ From [DarlanNoetzold](https://github.com/DarlanNoetzold)
