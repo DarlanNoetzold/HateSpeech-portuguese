@@ -53,17 +53,10 @@ docker exec -itd app /init-handler-hatespeech.sh
 
 ---
 ## Charts:
-* Balanced Accuracy:
-<br>![image](https://user-images.githubusercontent.com/41628589/162925653-617d4044-51ef-411b-b22a-d02e4b21e993.png)
+* Accuracy: ![image](https://github.com/DarlanNoetzold/HateSpeech-portuguese/assets/41628589/5de6518b-0c4a-436a-b46d-e127cfa221a9)
 
-* Accuracy:
-<br>![image](https://user-images.githubusercontent.com/41628589/162925763-3a68ec30-2ffc-468e-9ef3-535e236b8e03.png)
+<br>
 
-* Area under ROC Curve:
-<br>![image](https://user-images.githubusercontent.com/41628589/162925862-5f0547fa-3d5e-4e93-b7d9-b76564886696.png)
-
-* Accuracy (Validation):
-<br>![image](https://user-images.githubusercontent.com/41628589/162925953-5412f559-add2-4776-91d8-847f957cea8d.png)
 
 ---
 ⭐️ From [DarlanNoetzold](https://github.com/DarlanNoetzold)
